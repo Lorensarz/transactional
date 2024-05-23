@@ -56,15 +56,13 @@ public class OrderService {
 
         customerService.updateCustomerBalance(customer, totalAmount);
         productService.updateProductQuantities(products);
-        createOrder(customer, products, totalAmount);
-    }
 
-    @Transactional
-    public void createOrder(Customer customer, List<Product> products, double totalAmount) {
         Order order = new Order();
         order.setCustomer(customer);
         order.setProducts(products);
         order.setTotalAmount(totalAmount);
         orderRepository.save(order);
+
     }
+
 }
